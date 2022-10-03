@@ -1,18 +1,34 @@
 #ifndef PILA_H_INCLUDED
 #define PILA_H_INCLUDED
 
-typedef int Pila; //Tipo de dato pila//
+#define TAM_PILA 340
+
+typedef struct
+{
+    char pila[TAM_PILA];
+    unsigned tope;
+
+}Tpila;
+
+typedef struct
+{
+  char nombre[5];
+  float stock;
+
+}Tproducto;
+
+
 
 //Prototipos de primitivas//
 
 void CrearPila(Pila *pila);
-bool apilar(Pila *pila,void* dato,size_t tamElem);
+int ponerEnPila(Tpila *p,const void *d,unsigned cantBytes);
 bool desapilar(Pila *pila,void* elem,size_t tamElem);
 bool verTopeDePila(const Pila* pila,void* elem,size_t tamElem);
 bool PilaVacia(const Pila* pila);
-bool PilaLlena(const Pila*pila);
+int PilaLlena(const Tpila *p,unsigned cantbytes);
 void VaciarPila(Pila* pila);
-char* Sumar(const char* num1,const char* num2);
+void PonerySacardePila(void);
 
 
 

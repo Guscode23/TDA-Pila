@@ -4,43 +4,51 @@
 
 //Sumar numeros muy grandes//
 
-/*char* Sumar(const char* num1,const char* num2)
+
+void CrearPila(Tpila *p)
+{
+   p->tope=TAM_PILA;
+}
+
+int PilaLlena(const Tpila *p,unsigned cantbytes)
+{
+    return p->tope < cantbytes+sizeof(unsigned);
+
+}
+
+int ponerEnPila(Tpila *p,const void *d,unsigned cantBytes)
+{
+    if(p->tope <cantBytes+sizeof(unsigned))
+        return 0;
+
+    p->tope-=cantBytes;
+    memcpy(p->pila+p->tope,d,cantBytes);
+    p->tope-=sizeof(unsigned);
+    memcpy(p->pila+p->tope,&cantBytes,sizeof(unsigned));
+    return 1;
+
+}
+
+
+void PonerySacardePila(void)
 {
 
-    Pila pila1,pila2,pilaSuma;
+    Tpila pila;
+    Tproducto produc;
 
-    CrearPila(&pila1);
-    CrearPila(&pila2);
-    CrearPila(&pilaSuma);
-
-    int tamNum1=strlen(num1);
-    int tamNum2=strlen(num2);
-    int restaTams= tamNum1-tamNum2;
-    int cantCeros=abs(restaTams);
-
-    bool pilaMenor=restaTams<0;
-    bool pila2Menor=!pilaMenor;
-
-    if(pilaMenor)
-        apilarCeros(pilaMenor? &pila1 :&pila2,cantCeros);
+    CrearPila(&pila);
 
 
-    apilarNumero(&pila1,num1);
-    apilarNumero(&pila2,num2);
-
-    int digito1,digito2,digitoSuma
-
-    while(!PilaVacia(&pila1))
+    while(!PilaLlena(&pila,sizeof(produc))
     {
 
 
 
     }
 
-
-}*/
-
-void CrearPila(Pila *p)
-{
-
 }
+
+
+
+
+
